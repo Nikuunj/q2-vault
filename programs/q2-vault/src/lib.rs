@@ -2,15 +2,19 @@ use anchor_lang::prelude::*;
 
 declare_id!("AakuWqCs6Ud8S3LbWW9AJ5gSdPgTX1DsmZcGEW4irqGG");
 
+mod derive_account;
+mod instructions;
+mod states;
+
+pub use derive_account::*;
+pub use instructions::*;
+pub use states::*;
+
 #[program]
 pub mod q2_vault {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn init(ctx: Context<Init>) -> Result<()> {
+        ctx.accounts.init(&ctx.bumps)
     }
 }
-
-#[derive(Accounts)]
-pub struct Initialize {}
