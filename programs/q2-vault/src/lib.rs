@@ -17,4 +17,8 @@ pub mod q2_vault {
     pub fn init(ctx: Context<Init>) -> Result<()> {
         ctx.accounts.init(&ctx.bumps)
     }
+
+    pub fn deposit(ctx: Context<Deposit>, amount: u64) -> Result<()> {
+        ctx.accounts.deposit(amount)
+    }
 }
